@@ -31,11 +31,13 @@ func Constructor[K comparable, V any](capacity int) LRUCache[K, V] {
 }
 
 func (this *LRUCache[K, V]) Get(key K) V {
-	value, ok := this.hashMap[key]
+	element, ok := this.hashMap[key]
 
 	Utils.AssertEqual(ok, true)
 
-	return *value.Value.(listElementValue[K, V]).value
+	this.linkedList.MoveToBack(element)
+
+	return *element.Value.(listElementValue[K, V]).value
 }
 
 func (this *LRUCache[K, V]) Put(key K, value V) {

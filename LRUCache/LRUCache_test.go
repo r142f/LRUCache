@@ -14,8 +14,6 @@ func TestUsage(t *testing.T) {
 	Utils.AssertEqual(lruCache.Get(1), 1)
 
 	lruCache.Put(3, 3)
-	Utils.AssertEqual(lruCache.Get(2), 2)
-
 	lruCache.Put(4, 4)
 	Utils.AssertEqual(lruCache.Get(3), 3)
 	Utils.AssertEqual(lruCache.Get(4), 4)
